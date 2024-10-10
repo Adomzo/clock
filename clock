@@ -1,0 +1,20 @@
+from tkinter  import *
+import random 
+from time import strftime
+hexa='#'
+h=''
+def update_time():
+    global h,hexa
+    hexa='#'
+    hex=['1','2','3','4','5','6','7','8','9','A','B','C','D','E']
+    for i in range(6):
+        x= random.choice(hex)
+        hexa+=x
+    h=strftime('%H: %M: %S: %p')
+    times.config(text=h,fg=hexa)
+    times.after(1000,update_time)
+screen = Tk()
+times = Label(screen,text=h,bg='white',font=('arial',100))
+times.grid(row=0,column=0)
+update_time()
+screen.mainloop()
